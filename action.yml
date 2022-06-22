@@ -10,7 +10,7 @@
 # - echo k8s secret meta data to console
 # - echo masked secret to the console
 #------------------------------------------------------------------------------
-name: Open edX Tutor k8s get environment secret
+name: Open edX Tutor k8s deployment tools
 description: Github Action to convert k8s secrets into tutor config variables.
 branding:
   icon: 'cloud'
