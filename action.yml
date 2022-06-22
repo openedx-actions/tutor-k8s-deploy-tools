@@ -11,7 +11,7 @@
 # - echo masked secret to the console
 #------------------------------------------------------------------------------
 name: Open edX Tutor k8s deployment tools
-description: Github Action to convert k8s secrets into tutor config variables.
+description: Github Action to enable and configure tutor plugin tutor-contrib-k8s-deploy-tools.
 branding:
   icon: 'cloud'
   color: 'orange'
