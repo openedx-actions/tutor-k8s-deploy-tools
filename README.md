@@ -48,6 +48,6 @@ jobs:
       - name: Add tutor k8s deploy tools
         uses: openedx-actions/tutor-k8s-deploy-tools@v0.0.1
         with:
-          database-prefix: prod
-          database-suffix: schoolhouserocks
+          database-prefix: "prod_"
+          database-suffix: "_schoolhouserocks"
 ```
