@@ -1,0 +1,48 @@
+#------------------------------------------------------------------------------
+# written by: mcdaniel
+# date: june-2022
+#
+# - Extract a secret from a k8s namespace
+# - unpack and decode the data values
+# - format into a collection of bash environment variables that can be
+#   consumed by tutor on the command line during a ´tutor config save´ operation
+# - add a mask for the password values so that these do not leak into the console
+# - echo k8s secret meta data to console
+# - echo masked secret to the console
+#------------------------------------------------------------------------------
+name: Open edX Tutor k8s get environment secret
+description: Github Action to convert k8s secrets into tutor config variables.
+branding:
+  icon: 'cloud'
+  color: 'orange'
+inputs:
+  database-prefix:
+    description: 'A prefix to add to all MySQL databases created by tutor. Example: prod-openedx, prod-notes, prod-ecommerce, prod-xqueue'
+    type: string
+    required: false
+    default: ""
+  eks-secret-name:
+    description: 'A suffix to add to all MySQL databases created by tutor. Example: openedx-schoolofrock, notes-schoolofrock, ecommerce-schoolofrock, xqueue-schoolofrock'
+    type: string
+    required: false
+    default: ""
+runs:
+  using: "composite"
+  steps:
+    - name: install the plugin
+      id: install-plugin
+      shell: bash
+      run: pip install git+https://github.com/lpm0073/tutor-contrib-k8s-deploy-tools
+
+    - name: enable the plugin
+      id: enable-plugin
+      shell: bash
+      run: |-
+        tutor plugins enable k8s_deploy_tools
+
+    - name: configure the plugin
+      id: configure-plugin
+      shell: bash
+      run: |-
+        tutor config save --set MYSQL_DATABASE_PREFIX=${{ inputs.database-prefix }} \
+                          --set MYSQL_DATABASE_SUFFIX=${{ inputs.database-suffix }}
