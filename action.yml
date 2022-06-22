@@ -44,5 +44,5 @@ runs:
       id: configure-plugin
       shell: bash
       run: |-
-        tutor config save --set MYSQL_DATABASE_PREFIX=${{ inputs.database-prefix }} \
-                          --set MYSQL_DATABASE_SUFFIX=${{ inputs.database-suffix }}
+        tutor config save --set MYSQL_DATABASE_PREFIX="${{ inputs.database-prefix }}" \
+                          --set MYSQL_DATABASE_SUFFIX="${{ inputs.database-suffix }}"
