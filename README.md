@@ -13,8 +13,7 @@
 Github Action to enable and configure tutor plugin tutor-contrib-k8s-deploy-tools:
 
 
-## Usage:
-
+## Usage
 
 ```yaml
 name: Example workflow
@@ -27,11 +26,11 @@ jobs:
 
     steps:
       # required antecedent
-      - uses: actions/checkout@v3.5.0
+      - uses: actions/checkout
 
       # required antecedent
       - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v2
+        uses: aws-actions/configure-aws-credentials
         with:
           aws-access-key-id: ${{ secrets.THE_NAME_OF_YOUR_AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.THE_NAME_OF_YOUR_AWS_SECRET_ACCESS_KEY }}
@@ -39,7 +38,7 @@ jobs:
 
       # Intialize the ubuntu environment
       - name: Configure Github workflow environment
-        uses: openedx-actions/tutor-k8s-init@v1.0.8
+        uses: openedx-actions/tutor-k8s-init
         with:
           eks-namespace: ${{ env.NAMESPACE }}
           eks-cluster-name: ${{ env.EKS_CLUSTER_NAME }}
@@ -49,7 +48,7 @@ jobs:
       # database-prefix: optional input. default is ''
       # database-suffix: optional input. default is ''
       - name: Add tutor k8s deploy tools
-        uses: openedx-actions/tutor-k8s-deploy-tools@v1.0.1
+        uses: openedx-actions/tutor-k8s-deploy-tools
         with:
           database-prefix: "prod_"
           database-suffix: "_schoolhouserocks"
