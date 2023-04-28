@@ -21,7 +21,7 @@ inputs:
     type: string
     required: false
     default: ""
-  eks-secret-name:
+  database-suffix:
     description: 'A suffix to add to all MySQL databases created by tutor. Example: openedx-schoolofrock, notes-schoolofrock, ecommerce-schoolofrock, xqueue-schoolofrock'
     type: string
     required: false
