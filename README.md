@@ -45,8 +45,10 @@ jobs:
           aws-region: ${{ env.AWS_REGION }}
 
       # This action
+      # database-prefix: optional input. default is ''
+      # database-suffix: optional input. default is ''
       - name: Add tutor k8s deploy tools
-        uses: openedx-actions/tutor-k8s-deploy-tools@v0.0.1
+        uses: openedx-actions/tutor-k8s-deploy-tools@v1.0.1
         with:
           database-prefix: "prod_"
           database-suffix: "_schoolhouserocks"
